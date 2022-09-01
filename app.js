@@ -12,18 +12,23 @@ db.authenticate().then(() => {
 });
 
 const app = express();
+// url and json on top
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
 
 app.use(morgan("dev"));
 app.use(express.static(__dirname + "/public"));
+app.use('/wiki', require('./routes/wiki'));
+app.use('/users', require('./routes/users'));
 
-app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => {
-  res.send(layout(""));
+
+app.get("/", (req, res, next) => {
+  res.redirect("/wiki");
 });
 
 const init = async () => {
-  //await db.sync({force:true});
+  // await db.sync({force:true});
   await db.sync();
   // make sure that you have a PORT constant
   app.listen(PORT, () => {

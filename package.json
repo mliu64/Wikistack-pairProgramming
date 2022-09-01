@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon /Users/ethanlee/juniorphase/week2/wikistack/app.js",
+    "start": "nodemon /Users/fc-131/Min/Wikistack-pairProgramming/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
